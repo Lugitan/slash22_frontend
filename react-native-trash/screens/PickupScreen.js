@@ -1,21 +1,17 @@
-import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
-import {
-	ScrollView,
-	AspectRatio,
-	Center,
-	Stack,
-	// useTheme,
-	Heading,
-	NativeBaseProvider,
-	Box,
-	Divider,
-	Image,
-} from "native-base";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, SafeAreaView, Image, View } from "react-native";
+import { ScrollView, AspectRatio, Center, Stack, Heading, NativeBaseProvider, Box, Divider } from "native-base";
 import TrashItem from "../components/TrashItem";
 
-export default function PickupScreen() {
-	// const { colors } = useTheme();
+export default function PickupScreen({ route, navigation }) {
+	const [imageURI, setImageURI] = useState(" ");
+
+	useEffect(() => {
+		const { uri } = route.params;
+		setImageURI(uri)
+	}, []);
+
+
 	return (
 		<SafeAreaView style={styles.areaView}>
 			<NativeBaseProvider>
@@ -23,14 +19,15 @@ export default function PickupScreen() {
 					<Stack direction="row" mb="2.5" mt="1.5" space={3}>
 						<Center flex={1}>
 							<AspectRatio w="100%" ratio={16 / 9}>
-								<Image
+								{imageURI && <Image
 									source={{
-										uri: "https://wallpaperaccess.com/full/317501.jpg",
+										uri: imageURI,
 									}}
 									alt="Alternate Text"
 									size="xl"
 									borderRadius={100}
 								/>
+							}
 							</AspectRatio>
 						</Center>
 					</Stack>
