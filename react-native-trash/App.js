@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react"
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import HomeScreenNavigationWrapper from "./screens/HomeScreen";
+import MapScreen from "./screens/MapScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your Trashcollection!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<NavigationContainer>
+			<Tab.Navigator initialRouteName="Home" activeColor="white" barStyle={{ backgroundColor: "salmon" }}>
+				<Tab.Screen
+					name="Home"
+					component={HomeScreenNavigationWrapper}
+					options={{
+						tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />
+					}}
+				/>
+        <Tab.Screen
+					name="Map"
+					component={MapScreen}
+					options={{
+						tabBarIcon: ({ color }) => <MaterialIcons name="map" size={24} color={color} />
+					}}
+				/>
+        <Tab.Screen
+					name="Profile"
+					component={ProfileScreen}
+					options={{
+						tabBarIcon: ({ color }) => <Ionicons name="person" size={24} color={color} />
+					}}
+				/>
+			</Tab.Navigator>
+		</NavigationContainer>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
