@@ -1,10 +1,11 @@
-import HomeScreenNavigationWrapper from "./screens/HomeScreen";
-import MapScreen from "./screens/MapScreen";
-import ProfileScreen from "./screens/ProfileScreen";
+import React from "react"
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
+import HomeScreenNavigationWrapper from "./screens/HomeScreen";
+import MapScreen from "./screens/MapScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
