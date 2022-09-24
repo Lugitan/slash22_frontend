@@ -2,7 +2,7 @@ import { StyleSheet, Pressable, View, Text, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Entypo } from "@expo/vector-icons";
 
-export default function Homescreen() {
+export default function HomeScreen() {
 	return (
 		<SafeAreaView style={styles.safeAreaContainer}>
 			<View style={styles.container}>
