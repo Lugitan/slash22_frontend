@@ -1,0 +1,20 @@
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+html {
+	scrollbar-width: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+	display: none !important;
+}
+
+.mapboxgl-map {
+	border-radius: 15px;
+	border: 1px solid grey;
+}
