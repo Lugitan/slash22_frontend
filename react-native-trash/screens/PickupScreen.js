@@ -1,25 +1,27 @@
 import React from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
-import { ScrollView, AspectRatio, Center, Stack, useTheme, Heading, NativeBaseProvider, Box, Divider, Image } from "native-base";
+import {
+	ScrollView,
+	AspectRatio,
+	Center,
+	Stack,
+	// useTheme,
+	Heading,
+	NativeBaseProvider,
+	Box,
+	Divider,
+	Image,
+} from "native-base";
 import TrashItem from "../components/TrashItem";
 
 export default function PickupScreen() {
-	const { colors } = useTheme();
+	// const { colors } = useTheme();
 	return (
 		<SafeAreaView style={styles.areaView}>
 			<NativeBaseProvider>
-				<Center mt="45px" h="100px">
+				<Center mt="45px" h="100px" px="3">
 					<Stack direction="row" mb="2.5" mt="1.5" space={3}>
-						<Center
-							size="16"
-							bg="primary.400"
-							rounded="sm"
-							_text={{
-								color: "warmGray.50",
-								fontWeight: "medium",
-							}}
-							shadow={"3"}
-						>
+						<Center flex={1}>
 							<AspectRatio w="100%" ratio={16 / 9}>
 								<Image
 									source={{
@@ -27,26 +29,15 @@ export default function PickupScreen() {
 									}}
 									alt="Alternate Text"
 									size="xl"
+									borderRadius={100}
 								/>
 							</AspectRatio>
-						</Center>
-						<Center
-							bg="primary.500"
-							size="16"
-							rounded="sm"
-							_text={{
-								color: "warmGray.50",
-								fontWeight: "medium",
-							}}
-							shadow={"3"}
-						>
-							Box 2
 						</Center>
 					</Stack>
 				</Center>
 				<Divider
 					mb="2"
-					my="2"
+					// my="2"
 					_light={{
 						bg: "muted.800",
 					}}
