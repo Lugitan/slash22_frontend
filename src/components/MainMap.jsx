@@ -7,7 +7,7 @@ mapboxgl.accessToken = config.accessToken;
 
 const Root = styled("div")({});
 const MapContainer = styled("div")({
-	height: "80vh",
+	height: "calc(100vh - 120px)",
 });
 
 function MainMap() {
@@ -20,7 +20,7 @@ function MainMap() {
 		if (map.current) return; // initialize map only once
 		map.current = new mapboxgl.Map({
 			container: mapContainer.current,
-			style: "mapbox://styles/mapbox/streets-v11",
+			style: 'mapbox://styles/mapbox/outdoors-v10?optimize=true', // optimize=true
 			center: [lng, lat],
 			zoom,
 		});

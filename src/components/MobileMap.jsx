@@ -27,7 +27,7 @@ const Root = styled("div")({});
 // 	borderRadius: "4px",
 // });
 
-const MAPBOX_TOKEN = "pk.eyJ1IjoibnQtZmEiLCJhIjoiY2t0dHBvdmtvMGFwbjJwcXRndmY3cjdiaiJ9.f7EI4dg15enSn1Q20e5ipA";
+const MAPBOX_TOKEN = config.accessToken;
 function MobileMap(props) {
 	const { width, height, searchResult, setSearchResult, setLocation } = props;
 	const [viewport, setViewport] = useState({

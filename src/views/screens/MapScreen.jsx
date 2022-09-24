@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import { Grid, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { charStates, screens } from "../utils/constants";
+import { charStates, screens } from "../../utils/constants";
 import map from "../images/map.png";
 
 const SearchGrid = styled(Grid)({

@@ -4,11 +4,11 @@ import { styled } from "@mui/material/styles";
 import { Grid, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 
-import { useStateMap } from "../../Provider/MapProvider";
-import { useAddTrip } from "../../hooks/useTrip";
-import BookingFormControl from "../../components/BookingFormControl";
-import { charStates, screens } from "../../utils/constants";
-import MobileMap from "../../components/MobileMap";
+import { useStateMap } from "../../../Provider/MapProvider";
+import { useAddTrip } from "../../../hooks/useTrip";
+import BookingFormControl from "../../../components/BookingFormControl";
+import { charStates, screens } from "../../../utils/constants";
+import MobileMap from "../../../components/MobileMap";
 import map from "../../images/map.png";
 
 const SearchGrid = styled(Grid)({
@@ -117,14 +117,14 @@ function BookRide(props) {
 					<StaticMap src={map} alt="phone-map" />
 				</>
 			) : ( */}
-			{/* <MobileMap
+			<MobileMap
 				width="332px"
 				height="332px"
 				searchResult={searchResult}
 				setSearchResult={setSearchResult}
 				location={location}
 				setLocation={setLocation}
-			/> */}
+			/>
 			{/* )} */}
 			<BookingFormControl setScore={setScore} score={score} setSelectedItems={setSelectedItems} />
 			<BookButton

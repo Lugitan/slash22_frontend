@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 
-import { charStates, screens } from "../utils/constants";
+import { charStates, screens } from "../../utils/constants";
 import BookRide from "./BookRide/BookRide";
 import InCar from "./BookRide/InCar";
 import WaitingForCar from "./BookRide/WaitingForCar";

@@ -15,12 +15,12 @@ import { Services, ServicesContext } from './services/Services';
 import AppBar from './components/Navigation/Appbar';
 import Footer from './components/Navigation/Footer.jsx';
 import Mobile from './views/Mobile';
-import Main from './screens/Main';
+import Main from './views/screens/Main';
 import theme from './styles/defaultTheme';
 import { screens } from './utils/constants';
 import LandingPage from './views/LandingPage';
 import { MapProvider } from './Provider/MapProvider';
-import MainMap from "./views/MainMap"
+import MainMap from "./components/MainMap"
 
 const Root = styled('div')(() => ({
   display: 'flex',
@@ -107,7 +107,7 @@ function App() {
                             styles={{ height: '800px' }}
                           /> */}
                           <Mobile bottomRight={bottomRight} handleBottomRight={handleBottomRight}>
-                            <Main
+                            {/* <Main
                               bottomRight={bottomRight}
                               charId={charId}
                               location={location}
@@ -118,7 +118,7 @@ function App() {
                               changeScreen={handleChangeScreen}
                               handleChangeCharState={handleChangeCharState}
                               trip={trip}
-                            />
+                            /> */}
                           </Mobile>
                         </>
                       )}
