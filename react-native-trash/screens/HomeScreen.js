@@ -1,3 +1,4 @@
+import React from "react"
 import { StyleSheet, Pressable, View, Text, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Entypo } from "@expo/vector-icons";

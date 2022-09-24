@@ -1,52 +1,31 @@
 import React from "react";
-import { SafeAreaView, ScrollView, VStack, Center, useTheme, Heading, NativeBaseProvider } from "native-base";
+import {
+	SafeAreaView,
+	ScrollView,
+	VStack,
+	Center,
+	Text,
+	useTheme,
+	Heading,
+	NativeBaseProvider,
+	Box,
+} from "native-base";
+import TrashItem from "../components/TrashItem";
 
 export default function PickupScreen() {
+	const { colors } = useTheme();
 	return (
-		<SafeAreaView>
-			const {colors} = useTheme(); return{" "}
-			<ScrollView w={["200", "300"]} h="80">
-				<Center mt="3" mb="4">
-					<Heading fontSize="xl">Cyan</Heading>
-				</Center>
-				<VStack flex="1">
-					{Object.keys(colors.cyan).map((key, index) => {
-						if (index >= 1 && index <= 5)
-							return (
-								<Center py="4" bg={`cyan.${key}`}>
-									{key}
-								</Center>
-							);
-					})}
-				</VStack>
-				<Center mt="8" mb="4">
-					<Heading fontSize="xl">Yellow</Heading>
-				</Center>
-				<VStack flex="1">
-					{Object.keys(colors.cyan).map((key, index) => {
-						if (index >= 1 && index <= 5)
-							return (
-								<Center py="4" bg={`yellow.${key}`}>
-									{key}
-								</Center>
-							);
-					})}
-				</VStack>
-				<Center mt="8" mb="4">
-					<Heading fontSize="xl"> Violet</Heading>
-				</Center>
-				<VStack flex="1">
-					{Object.keys(colors.violet).map((key, index) => {
-						if (index >= 1 && index <= 5)
-							return (
-								<Center py="4" bg={`violet.${key}`}>
-									{key}
-								</Center>
-							);
-					})}
-				</VStack>
-			</ScrollView>
-			;
-		</SafeAreaView>
+		<NativeBaseProvider>
+			<Center flex={1} px="3">
+				<Box>
+					<Heading size="md" ml="-1">
+						The Garden City
+					</Heading>
+				</Box>
+				<ScrollView w="100%" h="100%" horizontal={true}>
+					<TrashItem />
+				</ScrollView>
+			</Center>
+		</NativeBaseProvider>
 	);
 }
