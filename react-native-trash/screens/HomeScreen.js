@@ -4,9 +4,24 @@ import { StatusBar } from "expo-status-bar";
 import { Entypo } from "@expo/vector-icons";
 import { Camera, CameraType, AutoFocus } from "expo-camera";
 import { useIsFocused } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from '@react-navigation/native'; 
 
-export default function HomeScreen() {
-	const [type, setType] = useState(CameraType.back);
+const Stack = createNativeStackNavigator();
+
+export default function HomeScreenNavigationWrapper() {
+	return (
+		<Stack.Navigator
+			screenOptions={{
+				headerShown: false,
+			}}
+		>
+			<Stack.Screen name="HomeScreen" component={HomeScreen} />
+		</Stack.Navigator>
+	);
+}
+
+function HomeScreen() {
 	const [permission, requestPermission] = Camera.useCameraPermissions();
 	const [inCameraView, setInCameraView] = useState(false);
 	const [imageObject, setImageObject] = useState({});
@@ -37,18 +52,18 @@ export default function HomeScreen() {
 
 	return (
 		<SafeAreaView style={styles.safeAreaContainer}>
-			<View style={styles.container}></View>
-			{inCameraView ? (
-				<CameraView
-					autoFocus={autoFocus}
-					type={type}
-					setImageObject={setImageObject}
-					setInCameraView={setInCameraView}
-				/>
-			) : (
-				<TrashButton onClick={onReportTrashClick} />
-			)}
-			{imageObject.uri && <Image source={{ uri: imageObject.uri }} style={styles.image} />}
+			<View style={styles.container}>
+				{inCameraView ? (
+					<CameraView
+						autoFocus={autoFocus}
+						setImageObject={setImageObject}
+						setInCameraView={setInCameraView}
+					/>
+				) : (
+					<TrashButton onClick={onReportTrashClick} />
+				)}
+				{imageObject.uri && <Image source={{ uri: imageObject.uri }} style={styles.image} />}
+			</View>
 			<StatusBar style="auto" />
 		</SafeAreaView>
 	);
@@ -75,9 +90,10 @@ function TrashButton(props) {
 
 function CameraView(props) {
 	const camera = useRef(null);
+    const navigation = useNavigation();
 
 	return (
-		<Camera style={styles.camera} type={props.type} ref={camera}>
+		<Camera style={styles.camera}r ref={camera}>
 			<View style={styles.takePictureContainer}>
 				<TouchableOpacity
 					style={styles.takePictureButton}
@@ -94,8 +110,11 @@ function CameraView(props) {
 }
 
 const styles = StyleSheet.create({
+	safeAreaContainer: {
+		flex: 1,
+	},
 	container: {
-		flex: 0.4,
+		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
@@ -110,17 +129,18 @@ const styles = StyleSheet.create({
 		paddingRight: 8,
 		color: "white",
 	},
+	buttonContainer: {
+		flex: 1,
+	},
 	row: {
 		flexDirection: "row",
 		justifyContent: "center",
 		alignItems: "center",
 		gap: 8,
 	},
-	safeAreaContainer: {
-		flex: 1,
-	},
 	camera: {
-		flex: 1,
+		flex: 0.7,
+		width: "100%",
 	},
 	takePictureButton: {
 		width: 60,

@@ -1,4 +1,4 @@
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreenNavigationWrapper from "./screens/HomeScreen";
 import MapScreen from "./screens/MapScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,7 +14,7 @@ export default function App() {
 			<Tab.Navigator initialRouteName="Home" activeColor="white" barStyle={{ backgroundColor: "salmon" }}>
 				<Tab.Screen
 					name="Home"
-					component={HomeScreen}
+					component={HomeScreenNavigationWrapper}
 					options={{
 						tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />
 					}}
