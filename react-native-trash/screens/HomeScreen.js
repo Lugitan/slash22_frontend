@@ -1,22 +1,25 @@
 import { useState, useRef, useEffect } from "react";
-import { StyleSheet, Pressable, View, Text, SafeAreaView, Button, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, Pressable, View, Text, SafeAreaView, Button, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Entypo } from "@expo/vector-icons";
-import { Camera, CameraType, AutoFocus } from "expo-camera";
+import { Camera, AutoFocus } from "expo-camera";
 import { useIsFocused } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation } from '@react-navigation/native'; 
+import { useNavigation } from "@react-navigation/native";
+import PickupScreen from "./PickupScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function HomeScreenNavigationWrapper() {
 	return (
 		<Stack.Navigator
+            initialRouteName="HomeScreen"
 			screenOptions={{
 				headerShown: false,
 			}}
 		>
 			<Stack.Screen name="HomeScreen" component={HomeScreen} />
+			<Stack.Screen name="Pickup" component={PickupScreen} />
 		</Stack.Navigator>
 	);
 }
@@ -62,7 +65,6 @@ function HomeScreen() {
 				) : (
 					<TrashButton onClick={onReportTrashClick} />
 				)}
-				{imageObject.uri && <Image source={{ uri: imageObject.uri }} style={styles.image} />}
 			</View>
 			<StatusBar style="auto" />
 		</SafeAreaView>
@@ -90,18 +92,21 @@ function TrashButton(props) {
 
 function CameraView(props) {
 	const camera = useRef(null);
-    const navigation = useNavigation();
+	const navigation = useNavigation();
 
 	return (
-		<Camera style={styles.camera}r ref={camera}>
+		<Camera style={styles.camera} r ref={camera}>
 			<View style={styles.takePictureContainer}>
 				<TouchableOpacity
 					style={styles.takePictureButton}
 					onPress={() => {
-						camera.current.takePictureAsync().then((pic) => {
-							props.setImageObject(pic);
-							props.setInCameraView(false);
-						});
+						camera.current
+							.takePictureAsync()
+							.then((pic) => {
+								props.setImageObject(pic);
+                                return pic.uri;
+							})
+							.then((uri) => navigation.navigate("Pickup", { uri: uri }));
 					}}
 				/>
 			</View>
@@ -155,9 +160,5 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "flex-end",
 		paddingBottom: 20,
-	},
-	image: {
-		width: 320,
-		height: 640,
-	},
+	}
 });
