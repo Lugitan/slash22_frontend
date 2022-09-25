@@ -36,13 +36,12 @@ export async function createUser(base_url, user_id, token) {
     }
 }
 
-export async function getLeaderBoard(base_url, user_id, token) {
+export async function getLeaderBoard(base_url, user_id) {
     try {
         const response = await fetch(`${base_url}/user/leaderboard`, {
             method: 'GET',
             header: {
-                "user_id": user_id,
-                "user_token": token
+                "user_name": user_id
             }
         })
         const data = await response.json()
