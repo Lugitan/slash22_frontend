@@ -7,8 +7,6 @@ import { useIsFocused } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import PickupScreen from "./PickupScreen";
-import { useFirebase } from "../firebase/FirebaseUserContext";
-import { ref, uploadBytes } from "firebase/storage";
 
 const Stack = createNativeStackNavigator();
 
@@ -95,19 +93,7 @@ function TrashButton(props) {
 function CameraView(props) {
 	const camera = useRef(null);
 	const navigation = useNavigation();
-	const { storage } = useFirebase();
 
-	async function getBlob(url, storageref) {
-		await fetch(url)
-			.then((r) => {
-				return r.blob();
-			})
-			.then((blob) =>
-				uploadBytes(storageref, blob).then((snapshot) => {
-					console.log("Uploaded a blob or file!");
-				}),
-			);
-	}
 
 	return (
 		<Camera style={styles.camera} r ref={camera}>
@@ -119,8 +105,6 @@ function CameraView(props) {
 							.takePictureAsync()
 							.then((pic) => {
 								props.setImageObject(pic);
-								const picref = ref(storage, "test.jpg");
-                                getBlob(pic.uri, picref);
 								return pic.uri;
 							})
 							.then((uri) => navigation.navigate("Pickup", { uri: uri }));

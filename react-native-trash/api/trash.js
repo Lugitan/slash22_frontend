@@ -1,10 +1,9 @@
-export async function getTrash(base_url) {
+export async function getTrash(base_url, user_id) {
     try {
         const response = await fetch(`${base_url}/trash`, {
             method: 'GET',
             headers: {
                 "user_id": user_id,
-                "user_token": token
             }
         })
         const data = await response.json()
