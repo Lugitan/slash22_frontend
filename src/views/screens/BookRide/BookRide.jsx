@@ -5,7 +5,7 @@ import { Grid, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 
 import { useStateMap } from "../../../Provider/MapProvider";
-import { useAddTrip } from "../../../hooks/useTrip";
+import { useAddTrip } from "../../../hooks/useTrash";
 import BookingFormControl from "../../../components/BookingFormControl";
 import { charStates, screens } from "../../../utils/constants";
 import MobileMap from "../../../components/MobileMap";

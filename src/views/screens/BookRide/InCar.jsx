@@ -5,7 +5,7 @@ import { Button, CircularProgress } from "@mui/material";
 
 import map from "../../images/map.png";
 import { charStates, screens } from "../../../utils/constants";
-import { useGetOutCar } from "../../../hooks/useTrip";
+import { useGetOutCar } from "../../../hooks/useTrash";
 
 const Root = styled("div")({
 	textAlign: "center",

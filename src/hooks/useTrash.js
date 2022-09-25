@@ -1,18 +1,18 @@
 import { useMutation, useQuery } from "react-query";
 import { useServices } from "../services/Services";
 
-export const useTrip = (payload) => {
+export const useTrash = (payload) => {
 	const services = useServices();
-	const response = useQuery("trip", () => services.trip.getTrip(payload), {
-		refetchInterval: 1000,
+	const response = useQuery("trash", () => services.trash.getTrash(payload), {
+		refetchInterval: 3000,
 	});
 
 	return response;
 };
 
-export const useAddTrip = (opts) => {
+export const useReportTrash = (opts) => {
 	const services = useServices();
-	return useMutation((payload) => services.trip.addTrip(payload), {
+	return useMutation((payload) => services.trash.reportTrash(payload), {
 		...opts,
 		onSuccess: async (response, vars) => {
 			if (opts?.onSuccess) {
@@ -24,9 +24,9 @@ export const useAddTrip = (opts) => {
 	});
 };
 
-export const useGetInCar = (opts) => {
+export const useCreateNewTrash = (opts) => {
 	const services = useServices();
-	return useMutation((payload) => services.trip.getInCar(payload), {
+	return useMutation((payload) => services.trash.createNewTrash(payload), {
 		...opts,
 		onSuccess: async (response, vars) => {
 			if (opts?.onSuccess) {
@@ -38,9 +38,9 @@ export const useGetInCar = (opts) => {
 	});
 };
 
-export const useGetOutCar = (opts) => {
+export const usePickupTrash = (opts) => {
 	const services = useServices();
-	return useMutation((payload) => services.trip.getOutCar(payload), {
+	return useMutation((payload) => services.trash.pickupTrash(payload), {
 		...opts,
 		onSuccess: async (response, vars) => {
 			if (opts?.onSuccess) {
