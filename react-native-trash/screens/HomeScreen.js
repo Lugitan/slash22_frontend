@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default function HomeScreenNavigationWrapper() {
 	return (
 		<Stack.Navigator
-            initialRouteName="HomeScreen"
+			initialRouteName="HomeScreen"
 			screenOptions={{
 				headerShown: false,
 			}}
@@ -94,6 +94,7 @@ function CameraView(props) {
 	const camera = useRef(null);
 	const navigation = useNavigation();
 
+
 	return (
 		<Camera style={styles.camera} r ref={camera}>
 			<View style={styles.takePictureContainer}>
@@ -104,7 +105,7 @@ function CameraView(props) {
 							.takePictureAsync()
 							.then((pic) => {
 								props.setImageObject(pic);
-                                return pic.uri;
+								return pic.uri;
 							})
 							.then((uri) => navigation.navigate("Pickup", { uri: uri }));
 					}}
@@ -160,5 +161,5 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "flex-end",
 		paddingBottom: 20,
-	}
+	},
 });
