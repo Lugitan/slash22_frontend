@@ -10,7 +10,7 @@ export default function ProfileScreen() {
 		<SafeAreaView style={styles.container}>
 			<ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
 				<Text style={{ textAlign: "center" ,color: "white" }}>
-					Hi {JSON.stringify(getUser("http://10.0.4.250:8080", "1234", ""))}
+					Hi {JSON.stringify(getUser("gilles").then((data) => data))}
 				</Text>
 			</ImageBackground>
 		</SafeAreaView>

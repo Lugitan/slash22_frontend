@@ -14,7 +14,7 @@ export default function LeaderBoardScreen() {
 	useEffect(() => {
 		async function doSmth() {
 			setIwas(
-				await getLeaderBoard("http://10.0.4.250:8080", "gilles").then((data) => {
+				await getLeaderBoard("gilles").then((data) => {
 					return data;
 				}),
 			);
