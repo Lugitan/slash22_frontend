@@ -112,14 +112,15 @@ export default function PickupScreen({ route, navigation }) {
 			/>
 			<Box px="3">
 				<Heading size="md" ml="-1">
-					{console.log(projects)}
 					Already submitted trash
 				</Heading>
 			</Box>
 			<Center flex={1} px="3">
 				<ScrollView w="100%" h="100%" horizontal={true} contentContainerStyle={{ flexGrow: 1, margin: 4 }}>
-					<TrashItem />
-					<TrashItem />
+					{projects.length > 0 && projects.map((project) => (
+						// eslint-disable-next-line react/jsx-key
+						<TrashItem uri={project.image_url} reward={project.reward} name={project.reported_by} time={Math.floor(Math.random() * 50)} />
+					))}
 				</ScrollView>
 			</Center>
 		</NativeBaseProvider>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack } from "native-base";
 
-export default function TrashItem() {
+export default function TrashItem(props) {
 
 	return (
 		<Box alignItems="center" mt="40px">
@@ -28,7 +28,7 @@ export default function TrashItem() {
 					<AspectRatio w="100%" ratio={16 / 9}>
 						<Image
 							source={{
-								uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
+								uri: props.uri,
 							}}
 							alt="image"
 						/>
@@ -48,13 +48,13 @@ export default function TrashItem() {
 						px="3"
 						py="1.5"
 					>
-						PLASTIK
+						{props.reward} COINS REWARD!
 					</Center>
 				</Box>
 				<Stack p="4" space={3}>
 					<Stack space={2}>
 						<Heading size="md" ml="-1">
-							Neukölln
+							Reported by: {props.name}
 						</Heading>
 					</Stack>
 					<HStack alignItems="center" space={4} justifyContent="space-between">
@@ -66,7 +66,7 @@ export default function TrashItem() {
 								}}
 								fontWeight="400"
 							>
-								6 mins ago
+								{props.time} mins ago
 							</Text>
 						</HStack>
 					</HStack>
