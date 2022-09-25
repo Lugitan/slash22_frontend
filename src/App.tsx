@@ -29,7 +29,8 @@ const Root = styled("div")(() => ({
 	alignItems: "stretch",
 	minHeight: "100%",
 	overflow: "hidden",
-  backgroundImage: "url(./BG.png)"
+  backgroundImage: "url(./BG.png)",
+  zIndex: 999
 }));
 
 const Content = styled("div")(() => ({
