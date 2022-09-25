@@ -1,12 +1,20 @@
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { SafeAreaView, StyleSheet, Text, ImageBackground } from "react-native";
 import { getUser } from "../api/user";
 
-export default function ProfileScreen(){
-    return(
-        <SafeAreaView style={styles.container}>
-            <Text style={{ textAlign: "center" }}>Hi {JSON.stringify(getUser('http://10.0.4.250:8080', "1234", ""))}</Text>
-        </SafeAreaView>
-    )
+const image = {
+	uri: "https://firebasestorage.googleapis.com/v0/b/hackathon-trash.appspot.com/o/BG.png?alt=media&token=955bdbfb-fa7d-4723-9c7d-5b9d3e67495b",
+};
+
+export default function ProfileScreen() {
+	return (
+		<SafeAreaView style={styles.container}>
+			<ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
+				<Text style={{ textAlign: "center" ,color: "white" }}>
+					Hi {JSON.stringify(getUser("gilles").then((data) => data))}
+				</Text>
+			</ImageBackground>
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({
@@ -15,9 +23,10 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
+		color: "white"
 	},
 	button: {
-		backgroundColor: "salmon",
+		backgroundColor: "rgb(36,44,64)",
 		padding: 10,
 		borderRadius: 10,
 	},
@@ -34,5 +43,10 @@ const styles = StyleSheet.create({
 	},
 	safeAreaContainer: {
 		flex: 1,
+	},
+	bgimage: {
+		flex: 1,
+		justifyContent: "center",
+		width: "100%",
 	},
 });

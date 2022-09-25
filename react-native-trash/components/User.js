@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack } from "native-base";
 
-export default function TrashItem(props) {
 
+/*
+{
+							getLeaderBoard('http://10.0.4.250:8080', "gilles")
+							.then((data) => {
+								data.each((item) => {return (<User />)})
+							})
+						}
+*/
+
+export default function User() {
 	return (
 		<Box alignItems="center" mt="40px">
 			<Box
@@ -28,7 +36,7 @@ export default function TrashItem(props) {
 					<AspectRatio w="100%" ratio={16 / 9}>
 						<Image
 							source={{
-								uri: props.uri,
+								uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg",
 							}}
 							alt="image"
 						/>
@@ -48,13 +56,13 @@ export default function TrashItem(props) {
 						px="3"
 						py="1.5"
 					>
-						{props.reward} COINS REWARD!
+						PLASTIK
 					</Center>
 				</Box>
 				<Stack p="4" space={3}>
 					<Stack space={2}>
 						<Heading size="md" ml="-1">
-							Reported by: {props.name}
+							Neukölln
 						</Heading>
 					</Stack>
 					<HStack alignItems="center" space={4} justifyContent="space-between">
@@ -66,7 +74,7 @@ export default function TrashItem(props) {
 								}}
 								fontWeight="400"
 							>
-								{props.time} mins ago
+								6 mins ago
 							</Text>
 						</HStack>
 					</HStack>

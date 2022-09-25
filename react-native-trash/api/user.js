@@ -1,10 +1,11 @@
-export async function getUser(base_url, user_id, token) {
+const base_url = "https://trashhunter-qrvp7uu2ja-lm.a.run.app";
+
+export async function getUser(user_id) {
     try {
         const response = await fetch(`${base_url}/user`, {
             method: 'GET',
             headers: {
-                "user_id": user_id,
-                "user_token": token
+                "user_name": user_id
             }
         })
         const data = await response.json()
@@ -15,14 +16,13 @@ export async function getUser(base_url, user_id, token) {
     }
 }
 
-export async function createUser(base_url, user_id, token) {
+export async function createUser(user_id) {
     try {
         const response = await fetch(`${base_url}/user`, {
             method: 'POST',
             header: {
                 "Content-Type": 'application/json',
-                "user_id": user_id,
-                "user_token": token
+                "user_name": user_id
             },
             body: {
                 "user_name": ''
@@ -36,13 +36,12 @@ export async function createUser(base_url, user_id, token) {
     }
 }
 
-export async function getLeaderBoard(base_url, user_id, token) {
+export async function getLeaderBoard(user_id) {
     try {
         const response = await fetch(`${base_url}/user/leaderboard`, {
             method: 'GET',
             header: {
-                "user_id": user_id,
-                "user_token": token
+                "user_name": user_id
             }
         })
         const data = await response.json()
