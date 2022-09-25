@@ -48,6 +48,7 @@ export default function PickupScreen({ route, navigation }) {
 				}),
 			);
 	}
+	const names = ['gill', 'daniel', 'mantas', 'karsten']
 
 	return (
 		<NativeBaseProvider>
@@ -89,13 +90,15 @@ export default function PickupScreen({ route, navigation }) {
 														};
 													})
 													.then(({ long, lat }) => {
-														getDownloadURL(picref).then((bucketurl) =>
+														getDownloadURL(picref).then((bucketurl) => {
+															const randomElement = names[Math.floor(Math.random() * names.length)];
 															reportTrash(
 																{ longitude: long, latitude: lat },
 																bucketurl,
-																"filip",
-															),
-														);
+																randomElement,
+															)}
+						
+															);
 													});
 											})
 											.then(() => navigation.navigate("HomeScreen"));

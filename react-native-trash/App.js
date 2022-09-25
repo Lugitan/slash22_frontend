@@ -11,6 +11,9 @@ import SignInScreen from "./screens/SignInScreen";
 import { FirebaseUserProvider } from "./firebase/FirebaseUserContext";
 import { useFirebase } from "./firebase/FirebaseUserContext";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Warning: ...']);
 
 const Tab = createMaterialBottomTabNavigator();
 

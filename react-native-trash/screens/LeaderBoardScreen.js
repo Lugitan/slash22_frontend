@@ -29,7 +29,7 @@ export default function LeaderBoardScreen() {
 					<Box safeArea>
 						<Center flex={1} px="3">
 							<View>
-								{iwas.length > 0 && iwas.map((u, i) => (
+								{iwas && iwas.map((u, i) => (
 									<Text color="white" key={i}>
 										{i}. {u.user_name} ({u.Score})
 									</Text>
