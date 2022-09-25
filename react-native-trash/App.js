@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import HomeScreenNavigationWrapper from "./screens/HomeScreen";
 import MapScreen from "./screens/MapScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import LeaderBoard from "./screens/LeaderBoard";
+import LeaderBoardScreen from "./screens/LeaderBoardScreen";
 import SignInScreen from "./screens/SignInScreen";
 import { FirebaseUserProvider } from './firebase/FirebaseUserContext';
 import { useFirebase } from "./firebase/FirebaseUserContext";
@@ -40,7 +40,7 @@ export default function App() {
           />
 			<Tab.Screen
 				name="Leaderboard"
-				component={LeaderBoard}
+				component={LeaderBoardScreen}
 				options={{
 					tabBarIcon: ({ color }) => <MaterialIcons name="euro-symbol" size={24} color={color} />
 				}}

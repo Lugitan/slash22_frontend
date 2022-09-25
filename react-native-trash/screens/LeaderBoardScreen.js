@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { getLeaderBoard } from "../api/user";
 
-export default function LeaderBoard(){
+export default function LeaderBoardScreen(){
     return(
         <SafeAreaView style={styles.container}>
 			<ul>
