@@ -25,7 +25,7 @@ export default function TrashCard(props) {
 
 	return (
 		<Card sx={{ maxWidth: 345 }}>
-			<CardMedia component="img" height="140" image={currentTrash.image_url} alt="green iguana" />
+			<CardMedia component="img" height="400" image={currentTrash.image_url} alt="green iguana" />
 			<CardContent>
 				<Typography gutterBottom variant="h5" component="div">
 					{"Reported by: " + currentTrash.reported_by}

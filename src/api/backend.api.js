@@ -3,7 +3,7 @@ import config from "../utils/config";
 
 const backend = () => {
 	const client = axios.create({
-		baseURL: "http://localhost:8080/", //"https://trashhunter-qrvp7uu2ja-lm.a.run.app/",
+		baseURL: "https://trashhunter-qrvp7uu2ja-lm.a.run.app/", //"http://localhost:8080/"
 		headers: {
 			user_name: "gilles", // `Bearer ${token}`,
 			//Accept: "*/*"

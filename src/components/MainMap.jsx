@@ -16,7 +16,7 @@ function MainMap(props) {
 	var marker = new maplibregl.Marker({ color: "#FF0000" });
 	const [lng, setLng] = useState(13.404954);
 	const [lat, setLat] = useState(52.520008);
-	const [zoom, setZoom] = useState(9);
+	const [zoom, setZoom] = useState(11);
 	const [API_KEY] = useState(config.accessToken);
 	const { data, isSuccess } = useTrash();
 	const [oldData, setOldData] = useState(undefined);
@@ -33,7 +33,7 @@ function MainMap(props) {
 		map.current.on("move", () => {
 			setLng(map.current.getCenter().lng.toFixed(4));
 			setLat(map.current.getCenter().lat.toFixed(4));
-			setZoom(map.current.getZoom().toFixed(2));
+			setZoom(map.current.getZoom().toFixed(7));
 		});
 
 		// Add geolocate control to the map.
@@ -70,7 +70,7 @@ function MainMap(props) {
 		});
 
 		data.forEach((d, i) => {
-			var pin = new maplibregl.Marker().setLngLat([d.longitude, d.latitude]);
+			var pin = new maplibregl.Marker({ color: "#FF0000" }).setLngLat([d.longitude, d.latitude]);
 			pin.getElement().addEventListener("click", function (e) {
 				setCurrentTrash(d);
 				handleBottomRight(false);

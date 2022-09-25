@@ -10,13 +10,13 @@ function Main(props) {
 	const { currentTrash, setCurrentTrash } = props;
 	const [counter, setCounter] = useState(0);
 
-	console.log(currentTrash)
+	console.log(currentTrash);
 
 	const content = () => {
-		if(currentTrash) {
+		if (currentTrash) {
 			return <TrashCard currentTrash={currentTrash} setCurrentTrash={setCurrentTrash} />;
 		} else {
-			return <span>Select Trash</span>
+			return <span style={{ color: "white" }}>Select Trash</span>;
 		}
 	};
 
