@@ -4,23 +4,20 @@ import React, { useEffect, useState } from "react";
 import User from "../components/User";
 import { getLeaderBoard } from "../api/user";
 
+
 export default function LeaderBoardScreen() {
-	const [iwas, setIwas] = React.useState(0);
+	const [iwas, setIwas] = React.useState([]);
 
 	useEffect(() => {
-		setIwas(
-			getLeaderBoard("http://10.0.4.250:8080", "gilles").then((data) => {
-				console.log(data);
-				return JSON.stringify(data);
-			}),
-		);
+		async function doSmth() {
+			setIwas(
+				await getLeaderBoard("http://10.0.4.250:8080", "gilles").then((data) => {
+					return data;
+				}),
+			);
+		}
+		doSmth()
 	}, []);
-
-	console.log(iwas);
-
-	if (!iwas) {
-		console.log("no data yet");
-	}
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -29,15 +26,7 @@ export default function LeaderBoardScreen() {
 					<Center flex={1} px="3">
 						<View>
 							{
-								// getLeaderBoard('http://10.0.4.250:8080', "gilles")
-								// .then((data) => {
-								// 	setIwas(1)
-								// 	return JSON.stringify(data)
-								// })
-
-								// iwas && iwas.forEach((item) => {
-								<Text>{JSON.stringify(iwas)}</Text>
-								// })
+								iwas.map((u, i) => (<Text key={i}>{i}. {u.user_name} ({u.Score})</Text>))
 							}
 						</View>
 					</Center>
