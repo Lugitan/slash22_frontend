@@ -1,9 +1,12 @@
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import { SafeAreaView, StyleSheet, View, ImageBackground } from "react-native";
 import { Center, NativeBaseProvider, Box, Text } from "native-base";
 import React, { useEffect, useState } from "react";
 import User from "../components/User";
 import { getLeaderBoard } from "../api/user";
 
+const image = {
+	uri: "https://firebasestorage.googleapis.com/v0/b/hackathon-trash.appspot.com/o/BG.png?alt=media&token=955bdbfb-fa7d-4723-9c7d-5b9d3e67495b",
+};
 
 export default function LeaderBoardScreen() {
 	const [iwas, setIwas] = React.useState([]);
@@ -16,22 +19,26 @@ export default function LeaderBoardScreen() {
 				}),
 			);
 		}
-		doSmth()
+		doSmth();
 	}, []);
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<NativeBaseProvider>
-				<Box safeArea>
-					<Center flex={1} px="3">
-						<View>
-							{
-								iwas.map((u, i) => (<Text key={i}>{i}. {u.user_name} ({u.Score})</Text>))
-							}
-						</View>
-					</Center>
-				</Box>
-			</NativeBaseProvider>
+			<ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
+				<NativeBaseProvider>
+					<Box safeArea>
+						<Center flex={1} px="3">
+							<View>
+								{iwas.length > 0 && iwas.map((u, i) => (
+									<Text color="white" key={i}>
+										{i}. {u.user_name} ({u.Score})
+									</Text>
+								))}
+							</View>
+						</Center>
+					</Box>
+				</NativeBaseProvider>
+			</ImageBackground>
 		</SafeAreaView>
 	);
 }
@@ -44,7 +51,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	button: {
-		backgroundColor: "salmon",
+		backgroundColor: "rgb(36,44,64)",
 		padding: 10,
 		borderRadius: 10,
 	},
@@ -61,5 +68,10 @@ const styles = StyleSheet.create({
 	},
 	safeAreaContainer: {
 		flex: 1,
+	},
+	bgimage: {
+		flex: 1,
+		justifyContent: "center",
+		width: "100%",
 	},
 });

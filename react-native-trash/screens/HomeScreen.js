@@ -1,5 +1,14 @@
 import { useState, useRef, useEffect } from "react";
-import { StyleSheet, Pressable, View, Text, SafeAreaView, Button, TouchableOpacity } from "react-native";
+import {
+	StyleSheet,
+	Pressable,
+	View,
+	Text,
+	SafeAreaView,
+	Button,
+	TouchableOpacity,
+	ImageBackground,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Entypo } from "@expo/vector-icons";
 import { Camera, AutoFocus } from "expo-camera";
@@ -9,6 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import PickupScreen from "./PickupScreen";
 
 const Stack = createNativeStackNavigator();
+const image = { uri: "https://firebasestorage.googleapis.com/v0/b/hackathon-trash.appspot.com/o/BG.png?alt=media&token=955bdbfb-fa7d-4723-9c7d-5b9d3e67495b" };
 
 export default function HomeScreenNavigationWrapper() {
 	return (
@@ -54,8 +64,11 @@ function HomeScreen() {
 	}
 
 	return (
+		
+
 		<SafeAreaView style={styles.safeAreaContainer}>
 			<View style={styles.container}>
+			<ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
 				{inCameraView ? (
 					<CameraView
 						autoFocus={autoFocus}
@@ -65,9 +78,13 @@ function HomeScreen() {
 				) : (
 					<TrashButton onClick={onReportTrashClick} />
 				)}
+			</ImageBackground>
 			</View>
+			
 			<StatusBar style="auto" />
+			
 		</SafeAreaView>
+		
 	);
 }
 
@@ -93,7 +110,6 @@ function TrashButton(props) {
 function CameraView(props) {
 	const camera = useRef(null);
 	const navigation = useNavigation();
-
 
 	return (
 		<Camera style={styles.camera} r ref={camera}>
@@ -126,9 +142,11 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	button: {
-		backgroundColor: "salmon",
+		backgroundColor: "red",
 		padding: 10,
 		borderRadius: 10,
+		width: '45%',
+		alignSelf: 'center'
 	},
 	buttonText: {
 		fontSize: 18,
@@ -161,5 +179,10 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "flex-end",
 		paddingBottom: 20,
+	},
+	bgimage: {
+		flex: 1,
+		justifyContent: "center",
+		width: '100%'
 	},
 });
