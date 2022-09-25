@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import MapIcon from "@mui/icons-material/Map";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { styled } from "@mui/material/styles";
 
@@ -25,12 +25,12 @@ function MobileBottomMenu(props) {
 	return (
 		<MenuBar color="primary">
 			<Toolbar>
-				<IconButton color="inherit" onClick={() => handleChangeScreen(true)}>
-					<MapIcon />
+				<IconButton color="inherit" onClick={() => handleChangeScreen(false)}>
+					<HomeIcon />
 				</IconButton>
 				<Box sx={{ flexGrow: 1 }} />
-				<IconButton color="inherit" onClick={() => handleChangeScreen(false)}>
-					<DirectionsCarIcon />
+				<IconButton color="inherit" onClick={() => handleChangeScreen(true)}>
+					<MapIcon />
 				</IconButton>
 				<Box sx={{ flexGrow: 1 }} />
 				<IconButton color="inherit" onClick={() => handleChangeScreen(false)}>

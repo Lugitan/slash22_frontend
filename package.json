@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
     "@emotion/react": "^11.10.4",
