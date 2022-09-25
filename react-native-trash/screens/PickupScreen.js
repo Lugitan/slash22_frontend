@@ -54,6 +54,7 @@ export default function PickupScreen({ route, navigation }) {
 									}}
 									alt="Alternate Text"
 									size="xl"
+									borderRadius={100}
 								/>
 							)}
 						</AspectRatio>
