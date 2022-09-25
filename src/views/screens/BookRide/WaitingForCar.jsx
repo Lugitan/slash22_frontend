@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import { Grid, CircularProgress, Typography, Button } from "@mui/material";
 import BookingSummary from "../../../components/BookingSummary";
-import { useTrip, useGetInCar } from "../../../hooks/useTrip";
+import { useTrip, useGetInCar } from "../../../hooks/useTrash";
 import { charStates, screens } from "../../../utils/constants";
-import { useChar } from "../../../hooks/useCharacter";
+import { useChar } from "../../../hooks/useUser";
 
 const Root = styled(Grid)({
 	width: "100%",

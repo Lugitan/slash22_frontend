@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@date-io/date-fns": "^2.16.0",
     "@emotion/react": "^11.10.4",
@@ -23,6 +24,7 @@
     "date-fns": "^2.29.3",
     "env-cmd": "^10.1.0",
     "mapbox-gl": "^2.10.0",
+    "maplibre-gl": "^2.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-div-100vh": "^0.7.0",

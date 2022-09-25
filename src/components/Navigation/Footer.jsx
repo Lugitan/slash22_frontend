@@ -25,14 +25,14 @@ const Footer = () => (
 			<Grid container direction="row" alignItems="center" justifyContent="flex-start">
 				<Grid item xs={2}>
 					<Links variant="body2" sx={{ textAlign: "left" }}>
-						<Link href=" " rel="noopener noreferrer" underline="none">
+						<Link href=" " rel="noopener noreferrer" underline="none" style={{color: "white"}}>
 							Legal Imprint
 						</Link>
 					</Links>
 				</Grid>
 				<Grid item xs={2}>
 					<Links variant="body2" sx={{ textAlign: "left" }}>
-						<Link href=" " rel="noopener noreferrer" underline="none">
+						<Link href=" " rel="noopener noreferrer" underline="none" style={{color: "white"}}>
 							Priavcy Policy
 						</Link>
 					</Links>
@@ -40,7 +40,7 @@ const Footer = () => (
 			</Grid>
 			<Grid container direction="row" alignItems="flex-end" justifyContent="center">
 				<Grid item xs={4}>
-					<Typography sx={{ margin: "5px 0 5px 0" }} variant="body2">
+					<Typography sx={{ margin: "5px 0 5px 0" }} variant="body2" style={{color: "white"}}>
 						&copy; Trash Hunter 2022
 					</Typography>
 				</Grid>

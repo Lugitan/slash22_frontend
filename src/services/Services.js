@@ -1,18 +1,15 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import TripService from "./TripService";
-import CarService from "./CarService";
-import CharacterService from "./CharacterService";
+import TrashService from "./TrashService";
+import UserService from "./UserService";
 
 export const Services = (api) => {
-	const trip = TripService(api);
-	const car = CarService(api);
-	const char = CharacterService(api);
+	const trash = TrashService(api);
+	const user = UserService(api);
 
 	return {
-		trip,
-		char,
-		car,
+		user,
+		trash
 	};
 };
 

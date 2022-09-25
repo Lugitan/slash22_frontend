@@ -20,9 +20,10 @@ const CustomAppBar = () => (
 		<Toolbar>
 			<Grid container direction="row" alignItems="center" alignContent="center" justifyContent="center">
 				<Grid item xs={12} md={12}>
-					<Title variant="h4" color="primary">
+					{/* <Title variant="h4" style={{color: "white"}}>
 						Trash Hunter
-					</Title>
+					</Title> */}
+					<img style={{ height: "50px" }} alt="logo" src="Text.png" />
 				</Grid>
 			</Grid>
 		</Toolbar>
