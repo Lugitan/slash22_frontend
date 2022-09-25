@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack } from "native-base";
 
 export default function TrashItem() {
+
 	return (
 		<Box alignItems="center" mt="40px">
 			<Box

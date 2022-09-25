@@ -14,18 +14,22 @@ import {
 	Text,
 } from "native-base";
 import TrashItem from "../components/TrashItem";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useFirebase } from "../firebase/FirebaseUserContext";
-import { reportTrash } from "../api/trash";
-
+import { getTrash, reportTrash } from "../api/trash";
+import * as Location from "expo-location";
 export default function PickupScreen({ route, navigation }) {
 	const [imageURI, setImageURI] = useState(" ");
 	const [location, setLocation] = useState("Erich-Weinert-Straße 145, 10409 Berlin");
+	const [bucketID, setBucketID] = useState("sangwoo.jpg");
+	const [projects, setProjects] = useState({});
 	const { storage } = useFirebase();
 
 	useEffect(() => {
 		const { uri } = route.params;
 		setImageURI(uri);
+		setBucketID(makeid(5) + ".jpg");
+		getTrash("filip").then((data) => setProjects(data));
 	}, []);
 
 	async function uploadBlob(url, storageref) {
@@ -36,7 +40,6 @@ export default function PickupScreen({ route, navigation }) {
 			.then((blob) =>
 				uploadBytes(storageref, blob).then(() => {
 					console.log("Uploaded a blob or file!");
-					navigation.navigate("HomeScreen");
 				}),
 			);
 	}
@@ -69,8 +72,27 @@ export default function PickupScreen({ route, navigation }) {
 								size="12"
 								color="emerald.500"
 								onPress={() => {
-									const picref = ref(storage, "test.jpg");
-									uploadBlob(imageURI, picref);
+									const picref = ref(storage, bucketID);
+									uploadBlob(imageURI, picref)
+										.then(async () => {
+											await Location.getCurrentPositionAsync({})
+												.then((location) => {
+													return {
+														long: location.coords.longitude,
+														lat: location.coords.latitude,
+													};
+												})
+												.then(({ long, lat }) => {
+													getDownloadURL(picref).then((bucketurl) =>
+														reportTrash(
+															{ longitude: long, latitude: lat },
+															bucketurl,
+															"filip",
+														),
+													);
+												});
+										})
+										.then(() => navigation.navigate("HomeScreen"));
 								}}
 							/>
 							<CloseIcon size="12" color="danger.600" onPress={() => navigation.navigate("HomeScreen")} />
@@ -90,6 +112,7 @@ export default function PickupScreen({ route, navigation }) {
 			/>
 			<Box px="3">
 				<Heading size="md" ml="-1">
+					{console.log(projects)}
 					Already submitted trash
 				</Heading>
 			</Box>
@@ -101,4 +124,14 @@ export default function PickupScreen({ route, navigation }) {
 			</Center>
 		</NativeBaseProvider>
 	);
+}
+
+function makeid(length) {
+	var result = "";
+	var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+	return result;
 }
